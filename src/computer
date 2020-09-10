@@ -1,0 +1,49 @@
+    private Point computerMove() {
+        ArrayList<Point> possibleMoves = new ArrayList<Point>();
+        for (int i = 0; i < GRID_SIZE; i++) {
+            for (int j = 0; j < GRID_SIZE; j++) {
+                if (drawingGrid[i][j] == null) {
+                    possibleMoves.add(new Point(i, j, false));
+                }
+            }
+        }
+
+        //Random r = new Random();
+        //if (!possibleMoves.isEmpty()) {
+            //int n = r.nextInt(possibleMoves.size());
+
+        //}
+        Point best = bestMove();
+        System.out.println(best.getX() + " " + best.getY());
+        if (possibleMoves.contains(best)) {
+            int index = possibleMoves.indexOf(best);
+            return possibleMoves.get(index);
+        }
+        return null;
+    }
+
+    private Point bestMove() {
+        int x = 0;
+        int y = 0;
+
+        for (int i = 0; i < GRID_SIZE; i++) {
+            for (int j = 0; j < GRID_SIZE; j++) {
+                if (drawingGrid[i][j] != null) {
+                    if (drawingGrid[i][j].isX()) {
+                        if (i + 1 < GRID_SIZE) {
+                            x++;
+                        } else {
+                            x--;
+                        }
+                    } else {
+                        if (j + 1 < GRID_SIZE) {
+                            y--;
+                        } else {
+                            y++;
+                        }
+                    }
+                }
+            }
+        }
+        return new Point(x, y, false);
+    }

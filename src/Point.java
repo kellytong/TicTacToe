@@ -26,8 +26,6 @@ public class Point {
         this.y = y;
     }
 
-    public void setIsX(boolean b) { this.isX = b; }
-
     @Override
     public String toString() {
         return "Point{" +
